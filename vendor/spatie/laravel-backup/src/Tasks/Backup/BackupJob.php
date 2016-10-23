@@ -150,7 +150,7 @@ class BackupJob
 
             $this->copyToBackupDestinations($zip);
 
-            //$this->temporaryDirectory->delete();
+            $this->temporaryDirectory->delete();
         } catch (Exception $exception) {
             consoleOutput()->error("Backup failed because {$exception->getMessage()}.");
 
@@ -180,11 +180,7 @@ class BackupJob
     protected function addSelectedFilesToZip(Zip $zip)
     {
         consoleOutput()->info('Determining files to backup...');
-		$wtf = $this->fileSelection->getSelectedFiles();
-		foreach($wtf as $ftw)
-		{
-			consoleOutput()->info('Inside SelectedFiles: ' . $ftw);
-		}
+		
         $zip->add($this->fileSelection->getSelectedFiles());
 
         consoleOutput()->info("Zipped {$zip->count()} files...");
@@ -214,7 +210,6 @@ class BackupJob
         $this->backupDestinations->each(function (BackupDestination $backupDestination) use ($zip) {
             try {
                 $fileSize = Format::getHumanReadableSize($zip->getSize());
-				consoleOutput()->info('File size is : ' .$fileSize);
 				
                 $fileName = pathinfo($zip->getPath(), PATHINFO_BASENAME);
 

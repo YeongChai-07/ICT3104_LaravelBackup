@@ -61,7 +61,6 @@ class Zip
     protected function open()
     {
         $this->zipFile->open($this->pathToZip, ZipArchive::CREATE);
-		consoleOutput()->info('Path to Zip: ' . $this->pathToZip);
     }
 
     protected function close()
@@ -89,7 +88,6 @@ class Zip
 
         foreach ($files as $file) {
             $this->zipFile->addFile($file, $nameInZip);
-			consoleOutput()->info('Name In Zip: ' . $file);
             ++$this->fileCount;
         }
 
