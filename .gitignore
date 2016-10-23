@@ -1,6 +1,9 @@
 !/vendor/spatie/*
+/app/http---localhost
 /node_modules
 /public/storage
+/storage/laravel-backups/*
+/storage/laravel-backups/*
 Homestead.yaml
 Homestead.json
 .env
