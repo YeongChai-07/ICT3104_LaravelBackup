@@ -91,7 +91,7 @@ class FileSelection
             if ($this->shouldExclude($file)) {
                 continue;
             }
-
+			consoleOutput()->info('Current File Path: ' . $file->getPathname());
             yield $file->getPathname();
         }
     }
